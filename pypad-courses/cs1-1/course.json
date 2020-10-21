@@ -34,23 +34,23 @@
             "docs": [
                 {
                     "name": "Task 1: Zigzag",
-                    "id": "zigzag"
+                    "id": "02-1-zigzag"
                 },
                 {
                     "name": "Task 2: Hurdles",
-                    "id": "hurdles"
+                    "id": "02-2-hurdles"
                 },
                 {
                     "name": "Task 3: Newspaper Delivery",
-                    "id": "newspaper"
+                    "id": "02-3-newspaper"
                 },
                 {
                     "name": "Task 4: Harvest",
-                    "id": "harvest"
+                    "id": "02-4-harvest"
                 },
                 {
                     "name": "Task 5: Harvest Again",
-                    "id": "harvest-again"
+                    "id": "02-5-harvest-again"
                 }
             ]
         }

@@ -45,7 +45,11 @@ Now let's solve an exercise problem with a robot.
 
 > A robot should climb the stairs to the front door, drop a newspaper there, and return to his starting point.
 
+<img src="../assets/02-3-newspaper-init.png" style="max-width:320px" />
 
+<img src="../assets/02-3-newspaper-checkpoint.png" style="max-width:320px" />
+
+<img src="../assets/02-3-newspaper.png" style="max-width:320px" />
 
 We can write a problem outline for this exercise. 
 
