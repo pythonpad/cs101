@@ -1,0 +1,58 @@
+{
+    "name": "Introduction to Programming",
+    "description": "An introductory programming course designed to teach programming skills and computational thinking.",
+    "chapters": [
+        {
+            "name": "Introduction",
+            "description": "Learn about this course and write basic Python code.",
+            "docs": [
+                {
+                    "name": "About the Course",
+                    "id": "01-1-about"
+                },
+                {
+                    "name": "Introduction",
+                    "id": "01-2-intro"
+                },
+                {
+                    "name": "Get Started",
+                    "id": "01-3-get-started"
+                },
+                {
+                    "name": "Robots",
+                    "id": "01-4-robots"
+                },
+                {
+                    "name": "Loops",
+                    "id": "01-5-loops"
+                }
+            ]
+        },
+        {
+            "name": "Lab: Tiny Bit of Python",
+            "description": "Learn to write basic Python syntax, define functions, and use for-loops.",
+            "docs": [
+                {
+                    "name": "Task 1: Zigzag",
+                    "id": "zigzag"
+                },
+                {
+                    "name": "Task 2: Hurdles",
+                    "id": "hurdles"
+                },
+                {
+                    "name": "Task 3: Newspaper Delivery",
+                    "id": "newspaper"
+                },
+                {
+                    "name": "Task 4: Harvest",
+                    "id": "harvest"
+                },
+                {
+                    "name": "Task 5: Harvest Again",
+                    "id": "harvest-again"
+                }
+            ]
+        }
+    ]
+}

@@ -75,7 +75,7 @@ def turn_around():
     hubo.turn_left()
 ```
 
-But how are we implement the `climb_up_four_stairs()`?
+But how do we implement the `climb_up_four_stairs()`?
 
 ```python
 def climb_up_four_stairs(): 

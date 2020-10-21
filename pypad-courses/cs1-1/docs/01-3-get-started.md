@@ -22,7 +22,7 @@ And this is a Python program that does the same thing as the one above.
 print('Hello world!') # This is a second comment. Hello world it says!
 ```
 
-Comments in Python start with the hash character (`#`), and extend to the end of that line. Comments are used to clarify code and they are not interpreted by Python.
+Comments in Python start with the hash character (`#`), and extend to the end of that line. Comments are used to clarify code and they are ignored by Python.
 
 ## Adding new functions
 

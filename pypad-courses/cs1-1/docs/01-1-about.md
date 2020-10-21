@@ -1,4 +1,4 @@
-# CS1: Introduction to Programming
+# CS101: Introduction to Programming
 
 The objective of CS101 is to teach programming skills and computational thinking. The first is important because programming is needed in all areas of science and engineering, although very different programming languages are used. The second is perhaps even more important, as it influences how you go about solving a problem. 
 

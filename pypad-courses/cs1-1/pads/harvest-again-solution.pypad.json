@@ -1,0 +1,22 @@
+{
+    "title": "[Answer] Harvest Again",
+    "content": "from cs1robots import *\n\nload_world('worlds/harvest2.wld')\n\nbot = Robot()\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\ndef turn_right():\n    for i in range(3):\n        bot.turn_left()\n\ndef diagonal_move():\n    bot.move()\n    turn_right()\n    bot.move()\n    bot.turn_left()\n\ndef pick_and_diagonal_move():\n    bot.pick_beeper()\n    diagonal_move()\n    \ndef diagonal_left_turn_around():\n    bot.move()\n    bot.turn_left()\n    bot.move()\n    bot.turn_left()\n    \ndef diagonal_right_turn_around():\n    turn_right()\n    bot.move()\n    turn_right()\n    bot.move()\n    \ndef diagonal_round_trip():\n    for i in range(5):\n        pick_and_diagonal_move()\n    bot.pick_beeper()\n    diagonal_left_turn_around()\n    for i in range(5):\n        pick_and_diagonal_move()\n    bot.pick_beeper()\n    diagonal_right_turn_around()\n\n\nfor i in range(5):\n    bot.move()\nbot.turn_left()\nbot.move()\n\nfor i in range(2):\n    diagonal_round_trip()\nfor i in range(5):\n    pick_and_diagonal_move()\nbot.pick_beeper()\ndiagonal_left_turn_around()\nfor i in range(5):\n    pick_and_diagonal_move()\nbot.pick_beeper()\n",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\ndef grade(grader):\n    cs1robots.load_world('harvest2')\n    cs1robots.helper.lock_world()\n    collector = StdoutCollector()\n    with collector:\n        import main\n    \n    test1 = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    test2 = grader.test('All beepers are picked up.', 'Please pick up all beepers in the world.')\n    \n    robots = cs1robots.helper.get_all_robots()\n    test1.expect(len(robots) == 1)\n    test2.expect(cs1robots.helper.get_all_beepers_dict() == {})\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        },
+        "worlds/harvest2.wld": {
+            "type": "text",
+            "body": "avenues = 12\nstreets = 12\nrobot = (1, 1, 'E', 36)\nwalls = []\nbeepers = {\n    (7, 3): 1, \n    (6, 10): 1, \n    (6, 6): 1, \n    (2, 8): 1, \n    (10, 6): 1, \n    (7, 7): 1, \n    (4, 6): 1, \n    (6, 2): 1, \n    (7, 11): 1, \n    (3, 7): 1, \n    (10, 8): 1, \n    (5, 5): 1, \n    (4, 4): 1, \n    (8, 10): 1, \n    (4, 8): 1, \n    (8, 6): 1, \n    (5, 3): 1, \n    (9, 7): 1, \n    (4, 10): 1, \n    (2, 6): 1, \n    (5, 11): 1, \n    (5, 9): 1, \n    (7, 5): 1, \n    (6, 12): 1, \n    (6, 4): 1, \n    (3, 5): 1, \n    (11, 7): 1, \n    (6, 8): 1, \n    (5, 7): 1, \n    (9, 9): 1, \n    (8, 8): 1, \n    (7, 9): 1, \n    (1, 7): 1, \n    (9, 5): 1, \n    (3, 9): 1, \n    (8, 4): 1\n}"
+        }
+    }
+}

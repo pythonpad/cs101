@@ -1,0 +1,22 @@
+{
+    "title": "[Answer] Newspaper Delivery",
+    "content": "from cs1robots import *\n\nload_world('worlds/newspaper.wld')\n\nbot = Robot(beepers=1)\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\ndef turn_right():\n    for i in range(3):\n        bot.turn_left()\n        \ndef turn_around():\n    for i in range(2):\n        bot.turn_left()\n        \ndef climb_up_one_stair():\n    bot.move()\n    bot.turn_left()\n    bot.move()\n    turn_right()\n    bot.move()\n    \ndef climb_up_four_stairs():\n    for i in range(4):\n        climb_up_one_stair()\n        \ndef climb_down_one_stair():\n    bot.move()\n    bot.move()\n    bot.turn_left()\n    bot.move()\n    turn_right()\n    \ndef climb_down_four_stairs():\n    for i in range(4):\n        climb_down_one_stair()\n\nclimb_up_four_stairs()\nbot.move()\nbot.drop_beeper()\nturn_around()\nclimb_down_four_stairs()\nbot.move()\n",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\nposition_log = [[0, 0], [1, 0], [1, 1], [2, 1], [3, 1], [3, 2], [4, 2], [5, 2], [5, 3], [6, 3], [7, 3], [7, 4], [8, 4], [9, 4], [8, 4], [7, 4], [7, 3], [6, 3], [5, 3], [5, 2], [4, 2], [3, 2], [3, 1], [2, 1], [1, 1], [1, 0], [0, 0]]\nbeepers_dict = {'9,4': 1}\n\ndef grade(grader):\n    test1 = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    test2 = grader.test('Robot climbed up all stairs and came back to the original position.', 'Please move the robot to climb up and down the stairs in the world exactly like in the example.')\n    test3 = grader.test('Robot has dropped the beeper at the target position..', 'Please let the robot drop the beeper at the top of the stairs exactly like in the example.')\n    \n    cs1robots.helper.load_world('newspaper')\n    cs1robots.helper.lock_world()\n    collector = StdoutCollector()\n    with collector:\n        import main\n    \n    robots = cs1robots.helper.get_all_robots()\n    test1.expect(len(robots) == 1)\n    test2.expect(robots[0].position_log == position_log)\n    test3.expect(cs1robots.helper.get_all_beepers_dict() == beepers_dict)\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        "worlds/newspaper.wld": {
+            "type": "text",
+            "body": "avenues = 10\nstreets = 10\nrobot = (1, 1, 'E', 1)\nwalls = [\n    (4, 1), \n    (5, 2), \n    (7, 2), \n    (8, 3), \n    (9, 4), \n    (11, 4), \n    (12, 5), \n    (13, 6), \n    (15, 6), \n    (16, 7), \n    (17, 8), \n    (19, 8)\n]\nbeepers = {}"
+        }
+    }
+}

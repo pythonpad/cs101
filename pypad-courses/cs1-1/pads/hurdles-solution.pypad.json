@@ -1,0 +1,22 @@
+{
+    "title": "[Answer] Hurdles",
+    "content": "from cs1robots import *\n\nload_world('worlds/hurdles1.wld')\n\nbot = Robot()\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\ndef turn_right():\n    for i in range(3):\n        bot.turn_left()\n        \ndef jump_one_hurdle():\n    bot.turn_left()\n    bot.move()\n    turn_right()\n    bot.move()\n    turn_right()\n    bot.move()\n    bot.turn_left()\n    \nfor i in range(4):\n    bot.move()\n    jump_one_hurdle()\nbot.move()\nbot.pick_beeper()\n",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\nposition_log = [[0, 0], [1, 0], [1, 1], [2, 1], [2, 0], [3, 0], [3, 1], [4, 1], [4, 0], [5, 0], [5, 1], [6, 1], [6, 0], [7, 0], [7, 1], [8, 1], [8, 0], [9, 0]]\n\ndef grade(grader):\n    test1 = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    test2 = grader.test('Robot jumped over the hurdles.', 'Please move the robot to jump over four hurdles in the world exactly like in the example.')\n    test3 = grader.test('The beeper on the world is picked up.', 'Please let the robot pick the beeper up after jumping over the hurdles.')\n    \n    cs1robots.helper.load_world('hurdles1')\n    cs1robots.helper.lock_world()\n    collector = StdoutCollector()\n    with collector:\n        import main\n    \n    robots = cs1robots.helper.get_all_robots()\n    test1.expect(len(robots) == 1)\n    test2.expect(robots[0].position_log == position_log)\n    test3.expect(cs1robots.helper.get_all_beepers_dict() == {})\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        "worlds/hurdles1.wld": {
+            "type": "text",
+            "body": "avenues = 10\nstreets = 10\nrobot = (1, 1, 'E', 0)\nwalls = [\n    (4, 1), \n    (8, 1), \n    (12, 1), \n    (16, 1)\n]\nbeepers = {\n    (10, 1): 1\n}"
+        }
+    }
+}
