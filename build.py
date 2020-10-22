@@ -30,7 +30,7 @@ def replace_paths(body, course_id):
     text = body
     text = re.sub(r'src="\.\.\/assets\/([^"]*)"', lambda m: 'src="/static/courses/%s"' % os.path.join(course_id, m.group(1)), text)
     text = re.sub(r'!\[([^\]]*)\]\(\.\.\/assets\/([^)]*)\)', lambda m: '![%s](/static/courses/%s)' % (m.group(1), os.path.join(course_id, m.group(2))), text)
-    text = re.sub(r'src="\.\.\/pads\/([^"]*)"', lambda m: 'src="../../pads/%s"' % os.path.join(course_id, m.group(1)), text)
+    text = re.sub(r'src="\.\.\/pads\/([^"]*)"', lambda m: 'src="../../pads/%s"' % m.group(1), text)
     return text
 
 def build_table(course_id):

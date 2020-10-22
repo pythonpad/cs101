@@ -4,27 +4,33 @@
     "chapters": [
         {
             "name": "Introduction",
-            "description": "Learn about this course and write basic Python code.",
+            "description": "Learn about this course.",
             "docs": [
                 {
                     "name": "About the Course",
-                    "id": "01-1-about"
+                    "id": "00-1-about"
                 },
                 {
                     "name": "Introduction",
-                    "id": "01-2-intro"
-                },
+                    "id": "00-2-intro"
+                }
+            ]
+        },
+        {
+            "name": "Functions and Loops",
+            "description": "Learn how to write basic Python code using functions and loops.",
+            "docs": [
                 {
                     "name": "Get Started",
-                    "id": "01-3-get-started"
+                    "id": "01-1-get-started"
                 },
                 {
                     "name": "Robots",
-                    "id": "01-4-robots"
+                    "id": "01-2-robots"
                 },
                 {
                     "name": "Loops",
-                    "id": "01-5-loops"
+                    "id": "01-3-loops"
                 }
             ]
         },
