@@ -1,0 +1,10 @@
+{
+    "title": "Edmund Gunter",
+    "content": "import math\n\nsin = math.sin\npi = math.pi\n\nfor i in range(31):\n    x = float(i) / 30.0 * 2 * pi\n    print (sin(x))",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import GradePipe, Grader\nimport cs1robots\n\ntest_data = [\n    [5, [0.0, 0.9510565162951535, 0.5877852522924732, -0.587785252292473, -0.9510565162951536]],\n    [8, [0.0, 0.7071067811865475, 1.0, 0.7071067811865476, 1.2246467991473532e-16, -0.7071067811865475, -1.0, -0.7071067811865477]],\n    [10, [0.0, 0.5877852522924731, 0.9510565162951535, 0.9510565162951536, 0.5877852522924732, 1.2246467991473532e-16, -0.587785252292473, -0.9510565162951535, -0.9510565162951536, -0.5877852522924734]],\n]\n\ndef grade(grader):    \n    with open('main.py', 'r') as f:\n        main_src = f.read()\n    \n    for i, (n, values) in enumerate(test_data):\n        test = grader.test('The program prints out correct values when user enters %d.' % n, 'Please print out the correct sine values of 2iπ/N for all i between 1 and %d.' % n)\n        \n        pipe = GradePipe()\n        pipe.set_inputs(['%d' % n])\n        with pipe:\n            if i == 0:\n                import main\n            else:\n                exec(main_src)\n        \n        split_output = pipe.get_output().split()\n        output_values = [float(value) for value in split_output[-n:]]\n        for out, ans in zip(output_values, values):\n            test.expect(abs(out - ans) < 0.0001)\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        }
+    }
+}

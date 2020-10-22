@@ -1,0 +1,10 @@
+{
+    "title": "Being Edmund Gunter 2",
+    "content": "import math\n\nsin = math.sin\npi = math.pi\n\nfor i in range(26):\n    character_count_per_line = 1 # Change this line to print out the sine curve correctly.\n    output_str = '#' * character_count_per_line\n    print(output_str)",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import GradePipe, Grader\nimport cs1robots\n\ncounts = [15, 18, 22, 25, 27, 29, 29, 29, 28, 26, 23, 20, 16, 13, 9, 6, 3, 1, 0, 0, 0, 2, 4, 7, 11, 14]\n\ndef grade(grader):    \n    with open('main.py', 'r') as f:\n        main_src = f.read()\n        \n    test1 = grader.test('The program prints out 26 lines.', 'Please draw a sine curve with 26 lines with max. 30 \"#\" characters in a line.')\n    test2 = grader.test('The program prints out a correctly shaped sine curve.', 'Please draw a sine curve that exactly looks like the one in the expected result section.')\n    \n    pipe = GradePipe()\n    with pipe:\n        import main\n        \n    output_lines = pipe.get_output().split('\\n')\n    while output_lines and (output_lines[-1] == ''):\n        output_lines.pop()\n    test1.expect(len(output_lines) == 26)\n    for line, count in zip(output_lines, counts):\n        test2.expect(line.strip().replace('#', '') == '')\n        test2.expect(abs(len(line.strip()) - count) <= 1)\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        }
+    }
+}

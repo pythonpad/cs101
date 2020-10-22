@@ -1,0 +1,30 @@
+{
+    "title": "title",
+    "content": "from cs1robots import *\n\n# Your code must work for all world files below.\n\nload_world('worlds/add1.wld')\n# load_world('worlds/add2.wld')\n# load_world('worlds/add34.wld')\n\nbot = Robot()\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\n",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\ntest_data = [\n    ('add1', {'9,0': 5}, 5),\n    ('add2', {'9,0': 5, '8,0': 3}, 35),\n    ('add34', {'9,0': 1, '8,0': 9, '7,0': 2, '6,0': 2}, 2291),\n]\n\ndef grade(grader):\n    collector = StdoutCollector()\n    bot_test = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    tests = []\n    \n    with open('main.py', 'r') as f:\n        main_src = f.read()\n    \n    for i, (world_name, beepers_dict, number) in enumerate(test_data):\n        test = grader.test('Robot added two numbers in world \"%s\".' % world_name , 'Please pick up all beepers, and drop beepers so that digits on the beepers shows the number %d as in expected results section above.' % number)\n        \n        cs1robots.helper.unlock_world()\n        cs1robots.load_world(world_name)\n        cs1robots.helper.lock_world()\n        \n        with collector:\n            if i == 0:\n                import main\n            else:\n                exec(main_src)\n                \n            robots = cs1robots.helper.get_all_robots()\n            bot_test.expect(len(robots) == 1)\n            test.expect(cs1robots.helper.get_all_beepers_dict() == beepers_dict)\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        "worlds/add34.wld": {
+            "type": "text",
+            "body": "avenues = 10\r\nstreets = 10\r\nrobot = (6, 1, 'E', 0)\r\nwalls = []\r\nbeepers = {\r\n    (8, 2): 9, \r\n    (7, 1): 1, \r\n    (8, 1): 3, \r\n    (9, 2): 8, \r\n    (10, 1): 4, \r\n    (10, 2): 7\r\n}"
+        },
+        "worlds/add2.wld": {
+            "type": "text",
+            "body": "avenues = 10\r\nstreets = 10\r\nrobot = (8, 1, 'E', 0)\r\nwalls = []\r\nbeepers = {\r\n    (9, 2): 1, \r\n    (9, 1): 2, \r\n    (10, 1): 2, \r\n    (10, 2): 3\r\n}"
+        },
+        "worlds/add1.wld": {
+            "type": "text",
+            "body": "avenues = 10\r\nstreets = 10\r\nrobot = (9, 1, 'E', 0)\r\nwalls = []\r\nbeepers = {\r\n    (10, 1): 3, \r\n    (10, 2): 2\r\n}"
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        }
+    }
+}

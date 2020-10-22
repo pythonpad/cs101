@@ -55,46 +55,50 @@
             ]
         },
         {
-            "name": "Conditionals and While-loops",
-            "description": "Learn how to use conditionals and while-loops.",
+            "name": "Functions with Parameters and Return Values",
+            "description": "Learn how to use functions with parameters and return values.",
             "docs": [
                 {
-                    "name": "Conditionals",
-                    "id": "03-1-conditionals"
+                    "name": "Return Values and Parameters",
+                    "id": "03-1-return-values-and-parameters"
                 },
                 {
-                    "name": "Indentations",
-                    "id": "03-2-indentations"
+                    "name": "More Return Values",
+                    "id": "03-2-more-return-values"
                 },
                 {
-                    "name": "While-loops",
-                    "id": "03-3-while-loops"
+                    "name": "Harvesting Again",
+                    "id": "03-3-harvesting-again"
+                },
+                {
+                    "name": "Keyboard Input",
+                    "id": "03-4-keyboard-input"
                 }
             ]
         },
         {
-            "name": "Lab: Smart Robots",
-            "description": "Practice using conditionals and while-loops to make smart robots.",
+            "name": "Lab: Math with Python",
+            "description": "Practice using functions with parameters and return values in Python programs.",
             "docs": [
                 {
-                    "name": "Task 1: Harvest More",
-                    "id": "04-1-harvest-more"
+                    "name": "Task 1: Addition",
+                    "id": "04-1-addition"
                 },
                 {
-                    "name": "Task 2: Plant",
-                    "id": "04-2-plant"
+                    "name": "Task 2: Being Euclid",
+                    "id": "04-2-euclid"
                 },
                 {
-                    "name": "Task 3: Smart Hurdles",
-                    "id": "04-3-smart-hurdles"
+                    "name": "Task 3: Being Edmund Gunter",
+                    "id": "04-3-gunter"
                 },
                 {
-                    "name": "Task 4: Harvest Even More",
-                    "id": "04-4-harvest-even-more"
+                    "name": "Task 4: Being Edmund Gunter 2",
+                    "id": "04-4-gunter2"
                 },
                 {
-                    "name": "Task 5: Smart Zigzag",
-                    "id": "04-5-smart-zigzag"
+                    "name": "Task 5: Being Edmund Gunter 3",
+                    "id": "04-5-gunter3"
                 }
             ]
         }
