@@ -23,7 +23,7 @@ def init_target_path():
     os.makedirs(BUILD_PATH)
 
 def get_course_ids():
-    course_ids = os.listdir(COURSE_PATH)
+    course_ids = [cid for cid in os.listdir(COURSE_PATH) if not cid.startswith('.')]
     return course_ids
 
 def replace_paths(body, course_id):
