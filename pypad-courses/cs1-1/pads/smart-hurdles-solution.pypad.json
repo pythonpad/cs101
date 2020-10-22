@@ -1,0 +1,30 @@
+{
+    "title": "[Answer] Smart Hurdles",
+    "content": "from cs1robots import *\n\n# Your code should work with any of the world files below. \n\n# TIP: Press Ctrl + '/' (or Cmd + '/' if you are using a Mac) \n# to comment out or restore the whole line of the code in the editor.\n\nload_world('worlds/hurdles1.wld')\n# load_world('worlds/hurdles2.wld')\n# load_world('worlds/hurdles3.wld')\n\nbot = Robot()\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\ndef turn_right():\n    for i in range(3):\n        bot.turn_left()\n\ndef jump_one_hurdle():\n    bot.turn_left()\n    bot.move()\n    turn_right()\n    bot.move()\n    turn_right()\n    bot.move()\n    bot.turn_left()\n\nwhile not bot.on_beeper():\n    if bot.front_is_clear():\n        bot.move()\n    else:\n        jump_one_hurdle()\n",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\nposition_log1 = [[0, 0], [1, 0], [1, 1], [2, 1], [2, 0], [3, 0], [3, 1], [4, 1], [4, 0], [5, 0], [5, 1], [6, 1], [6, 0], [7, 0], [7, 1], [8, 1], [8, 0], [9, 0]]\n\nposition_log2 = [[0, 0], [1, 0], [1, 1], [2, 1], [2, 0], [3, 0], [3, 1], [4, 1], [4, 0], [5, 0], [5, 1], [6, 1], [6, 0]]\n\nposition_log3 = [[0, 0], [0, 1], [1, 1], [1, 0], [1, 1], [2, 1], [2, 0], [3, 0], [3, 1], [4, 1], [4, 0], [4, 1], [5, 1], [5, 0], [5, 1], [6, 1], [6, 0], [7, 0], [7, 1], [8, 1], [8, 0], [8, 1], [9, 1], [9, 0]]\n\ndef grade(grader):\n    test1 = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    test2 = grader.test('Robot jumps over hurdles until it meets the beeper in \"hurdles1\".', 'Please move the robot exactly like in the example above.')\n    test3 = grader.test('Robot jumps over hurdles until it meets the beeper in \"hurdles2\".', 'Please move the robot exactly like in the example above.')\n    test4 = grader.test('Robot jumps over hurdles until it meets the beeper in \"hurdles3\".', 'Please move the robot exactly like in the example above.')\n    \n    cs1robots.load_world('hurdles1')\n    cs1robots.helper.lock_world()\n    collector = StdoutCollector()\n    with collector:\n        import main\n    \n    robots = cs1robots.helper.get_all_robots()\n    test1.expect(len(robots) == 1)\n    test2.expect(robots[0].position_log == position_log1)\n    \n    cs1robots.helper.unlock_world()\n    cs1robots.load_world('hurdles2')\n    cs1robots.helper.lock_world()\n    with collector:\n        with open('main.py', 'r') as f:\n            exec(f.read())\n            \n    robots = cs1robots.helper.get_all_robots()\n    test3.expect(robots[0].position_log == position_log2)\n    \n    cs1robots.helper.unlock_world()\n    cs1robots.load_world('hurdles3')\n    cs1robots.helper.lock_world()\n    with collector:\n        with open('main.py', 'r') as f:\n            exec(f.read())\n            \n    robots = cs1robots.helper.get_all_robots()\n    test3.expect(robots[0].position_log == position_log3)\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        "worlds/hurdles1.wld": {
+            "type": "text",
+            "body": "avenues = 10\nstreets = 10\nrobot = (1, 1, 'E', 0)\nwalls = [\n    (4, 1), \n    (8, 1), \n    (12, 1), \n    (16, 1)\n]\nbeepers = {\n    (10, 1): 1\n}"
+        },
+        "worlds/hurdles2.wld": {
+            "type": "text",
+            "body": "avenues = 10\nstreets = 10\nrobot = (1, 1, 'E', 0)\nwalls = [\n    (4, 1), \n    (8, 1), \n    (12, 1), \n    (16, 1)\n]\nbeepers = {\n    (7, 1): 1\n}"
+        },
+        "worlds/hurdles3.wld": {
+            "type": "text",
+            "body": "avenues = 10\nstreets = 10\nrobot = (1, 1, 'E', 0)\nwalls = [\n    (4, 1), \n    (8, 1), \n    (16, 1), \n    (2, 1), \n    (10, 1), \n    (18, 1), \n    (12, 1)\n]\nbeepers = {\n    (10, 1): 1\n}"
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "title": "Harvest Even More",
+    "content": "from cs1robots import *\n\n# Your code should work with any of the world files below. \n\nload_world('worlds/harvest1.wld')\n# load_world('worlds/harvest3.wld')\n# load_world('worlds/harvest4.wld')\n\nbot = Robot()\nbot.set_trace('blue')\nbot.set_pause(0.3)\n",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\ndef grade(grader):\n    test1 = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    test2 = grader.test('All beepers are picked up in \"harvest1\".', 'Please pick up all beepers in the world.')\n    test3 = grader.test('All beepers are picked up in \"harvest3\".', 'Please pick up all beepers in the world.')\n    test4 = grader.test('All beepers are picked up in \"harvest4\".', 'Please pick up all beepers in the world.')\n    \n    cs1robots.load_world('harvest1')\n    cs1robots.helper.lock_world()\n    collector = StdoutCollector()\n    with collector:\n        import main\n    \n    robots = cs1robots.helper.get_all_robots()\n    test1.expect(len(robots) == 1)\n    test2.expect(cs1robots.helper.get_all_beepers_dict() == {})\n    \n    cs1robots.helper.unlock_world()\n    cs1robots.load_world('harvest3')\n    cs1robots.helper.lock_world()\n    with collector:\n        with open('main.py', 'r') as f:\n            exec(f.read())\n            \n    robots = cs1robots.helper.get_all_robots()\n    test3.expect(cs1robots.helper.get_all_beepers_dict() == {})\n    \n    cs1robots.helper.unlock_world()\n    cs1robots.load_world('harvest4')\n    cs1robots.helper.lock_world()\n    with collector:\n        with open('main.py', 'r') as f:\n            exec(f.read())\n            \n    robots = cs1robots.helper.get_all_robots()\n    test4.expect(cs1robots.helper.get_all_beepers_dict() == {})\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        "worlds/harvest1.wld": {
+            "type": "text",
+            "body": "avenues = 7\nstreets = 7\nrobot = (1, 1, 'E', 0)\nwalls = []\nbeepers = {\n    (3, 3): 1, \n    (3, 2): 1, \n    (3, 1): 1, \n    (5, 6): 1, \n    (5, 1): 1, \n    (3, 6): 1, \n    (5, 3): 1, \n    (5, 2): 1, \n    (7, 6): 1, \n    (7, 5): 1, \n    (7, 4): 1, \n    (7, 3): 1, \n    (7, 2): 1, \n    (7, 1): 1, \n    (3, 5): 1, \n    (3, 4): 1, \n    (2, 4): 1, \n    (2, 5): 1, \n    (2, 6): 1, \n    (2, 1): 1, \n    (2, 2): 1, \n    (2, 3): 1, \n    (4, 6): 1, \n    (4, 4): 1, \n    (4, 5): 1, \n    (4, 2): 1, \n    (4, 3): 1, \n    (4, 1): 1, \n    (6, 1): 1, \n    (6, 2): 1, \n    (6, 3): 1, \n    (6, 4): 1, \n    (6, 5): 1, \n    (6, 6): 1, \n    (5, 5): 1, \n    (5, 4): 1\n}"
+        },
+        "worlds/harvest3.wld": {
+            "type": "text",
+            "body": "avenues = 7\nstreets = 7\nrobot = (1, 1, 'E', 0)\nwalls = []\nbeepers = {\n    (7, 3): 1, \n    (6, 6): 1, \n    (5, 6): 1, \n    (3, 2): 1, \n    (2, 1): 1, \n    (6, 2): 1, \n    (5, 1): 1, \n    (2, 5): 1, \n    (7, 2): 1, \n    (7, 6): 1, \n    (4, 4): 1, \n    (3, 6): 1, \n    (2, 2): 1, \n    (3, 5): 1, \n    (4, 1): 1, \n    (6, 4): 1, \n    (5, 4): 1, \n    (7, 1): 1, \n    (4, 5): 1, \n    (5, 5): 1, \n    (2, 3): 1, \n    (4, 2): 1, \n    (6, 5): 1, \n    (5, 3): 1, \n    (4, 6): 1, \n    (3, 4): 1, \n    (6, 1): 1, \n    (7, 4): 1, \n    (4, 3): 1, \n    (2, 4): 1\n}"
+        },
+        "worlds/harvest4.wld": {
+            "type": "text",
+            "body": "avenues = 7\nstreets = 7\nrobot = (1, 1, 'E', 99)\nwalls = []\nbeepers = {\n    (7, 3): 1, \n    (6, 6): 1, \n    (5, 6): 1, \n    (3, 2): 1, \n    (2, 1): 1, \n    (6, 2): 1, \n    (5, 1): 2, \n    (2, 5): 1, \n    (7, 2): 1, \n    (5, 5): 1, \n    (7, 6): 1, \n    (4, 4): 1, \n    (3, 6): 1, \n    (2, 2): 2, \n    (3, 5): 1, \n    (4, 1): 1, \n    (6, 4): 1, \n    (5, 4): 1, \n    (7, 1): 1, \n    (4, 5): 1, \n    (2, 3): 1, \n    (4, 2): 1, \n    (6, 5): 2, \n    (5, 3): 2, \n    (4, 6): 1, \n    (6, 1): 1, \n    (7, 4): 1, \n    (4, 3): 1, \n    (3, 4): 2, \n    (2, 4): 1\n}"
+        }
+    }
+}

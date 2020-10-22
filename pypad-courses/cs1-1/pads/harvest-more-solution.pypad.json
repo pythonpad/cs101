@@ -1,0 +1,22 @@
+{
+    "title": "[Answer] Harvest More",
+    "content": "from cs1robots import *\n\nload_world('worlds/harvest3.wld')\n\nbot = Robot()\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\ndef turn_right():\n    for i in range(3):\n        bot.turn_left()\n\ndef move_and_pick():\n    bot.move()\n    if bot.on_beeper():\n        bot.pick_beeper()\n        \ndef move5():\n    for i in range(5):\n        move_and_pick()\n        \ndef left_u_turn():\n    bot.turn_left()\n    move_and_pick()\n    bot.turn_left()\n    \ndef right_u_turn():\n    turn_right()\n    move_and_pick()\n    turn_right()\n    \nmove_and_pick()\nfor i in range(2):\n    move5()\n    left_u_turn()\n    move5()\n    right_u_turn()\nmove5()\nleft_u_turn()\nmove5()",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\ndef grade(grader):\n    cs1robots.load_world('harvest3')\n    cs1robots.helper.lock_world()\n    collector = StdoutCollector()\n    with collector:\n        import main\n    \n    test1 = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    test2 = grader.test('All beepers are picked up.', 'Please pick up all beepers in the world.')\n    \n    robots = cs1robots.helper.get_all_robots()\n    test1.expect(len(robots) == 1)\n    test2.expect(cs1robots.helper.get_all_beepers_dict() == {})\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        "worlds/harvest3.wld": {
+            "type": "text",
+            "body": "avenues = 7\nstreets = 7\nrobot = (1, 1, 'E', 0)\nwalls = []\nbeepers = {\n    (7, 3): 1, \n    (6, 6): 1, \n    (5, 6): 1, \n    (3, 2): 1, \n    (2, 1): 1, \n    (6, 2): 1, \n    (5, 1): 1, \n    (2, 5): 1, \n    (7, 2): 1, \n    (7, 6): 1, \n    (4, 4): 1, \n    (3, 6): 1, \n    (2, 2): 1, \n    (3, 5): 1, \n    (4, 1): 1, \n    (6, 4): 1, \n    (5, 4): 1, \n    (7, 1): 1, \n    (4, 5): 1, \n    (5, 5): 1, \n    (2, 3): 1, \n    (4, 2): 1, \n    (6, 5): 1, \n    (5, 3): 1, \n    (4, 6): 1, \n    (3, 4): 1, \n    (6, 1): 1, \n    (7, 4): 1, \n    (4, 3): 1, \n    (2, 4): 1\n}"
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        }
+    }
+}
