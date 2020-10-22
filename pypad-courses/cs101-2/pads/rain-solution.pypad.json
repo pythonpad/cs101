@@ -1,0 +1,26 @@
+{
+    "title": "[Answer] Rain",
+    "content": "from cs1robots import *\n\n# Your code must work for all world files below.\n\n# load_world('worlds/rain1.wld')\nload_world('worlds/rain2.wld')\n\n# Initialize your robot at the door of the house.\nbot = Robot(beepers=100, avenue=2, street=6, orientation='E')\n\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\n# Now close all the windows in the house!\ndef turn_right():\n    for i in range(3):\n        bot.turn_left()\n        \ndef check_left_and_move():\n    if bot.left_is_clear():\n        bot.turn_left()\n        bot.move()\n        if bot.left_is_clear() and bot.right_is_clear():\n            bot.turn_left()\n            bot.turn_left()\n            bot.move()\n            bot.turn_left()\n            bot.drop_beeper()\n            bot.move()\n    elif bot.front_is_clear():\n        bot.move()\n    else:\n        turn_right()\n        bot.move()\n        \nbot.move()\nbot.drop_beeper()\nbot.turn_left()\nbot.move()\n\nwhile not bot.on_beeper():\n    check_left_and_move()\n    \nbot.pick_beeper()\n",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\ntest_data = [\n    ('rain1', {'3,7': 1, '5,7': 1, '7,6': 1, '6,3': 1, '4,3': 1}),\n    ('rain2', {'3,7': 1, '5,7': 1, '8,7': 1, '10,6': 1, '10,3': 1, '9,2': 1, '4,3': 1}),\n]\n\ndef grade(grader):\n    collector = StdoutCollector()\n    bot_test = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    tests = []\n    \n    with open('main.py', 'r') as f:\n        main_src = f.read()\n        \n    cs1robots.helper.lock_robot_parameters(beepers=100, avenue=2, street=6, orientation='E')\n    \n    for i, (world_name, beepers_dict) in enumerate(test_data):\n        test = grader.test('Robot blocked all windows with the beepers in \"%s\".' % world_name , 'Please block all windows with the beepers. Note that the entrance (the opening at robot\\'s initial position) should not be closed with a beeper.')\n        \n        cs1robots.helper.unlock_world()\n        cs1robots.load_world(world_name)\n        cs1robots.helper.lock_world()\n        \n        with collector:\n            if i == 0:\n                import main\n            else:\n                exec(main_src)\n                \n            robots = cs1robots.helper.get_all_robots()\n            bot_test.expect(len(robots) == 1)\n            test.expect(cs1robots.helper.get_all_beepers_dict() == beepers_dict)\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        "worlds/rain1.wld": {
+            "type": "text",
+            "body": "avenues = 10\nstreets = 10\nrobot = (2, 6, 'E', 10)\nwalls = [\n    (5, 6), \n    (4, 7), \n    (4, 9), \n    (4, 13), \n    (4, 15), \n    (5, 16), \n    (9, 16), \n    (13, 16), \n    (15, 16), \n    (16, 15), \n    (16, 11), \n    (16, 9), \n    (16, 7), \n    (15, 6), \n    (11, 6), \n    (7, 6)\n]\nbeepers = {}"
+        },
+        "worlds/rain2.wld": {
+            "type": "text",
+            "body": "avenues = 12\nstreets = 9\nwalls = [\n    (5, 6), \n    (4, 7), \n    (4, 9), \n    (4, 13), \n    (4, 15), \n    (5, 16), \n    (9, 16), \n    (13, 16), \n    (15, 16), \n    (19, 16), \n    (21, 16), \n    (22, 15), \n    (22, 11), \n    (22, 9), \n    (22, 5), \n    (21, 4), \n    (17, 4), \n    (16, 5), \n    (15, 6), \n    (13, 6), \n    (11, 6), \n    (7, 6)\n]\nbeepers = {}\n"
+        }
+    }
+}

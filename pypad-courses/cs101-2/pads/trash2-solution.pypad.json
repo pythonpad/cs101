@@ -1,0 +1,26 @@
+{
+    "title": "[Answer] Trash 2",
+    "content": "from cs1robots import *\n\n# Your code must work for all world files below.\n\n# load_world('worlds/trash3.wld')\nload_world('worlds/trash4.wld')\n\nbot = Robot()\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\ndef turn_right():\n    for i in range(3):\n        bot.turn_left()\n    \ndef pick_all_beepers():\n    while bot.on_beeper():\n        bot.pick_beeper()\n        \ndef drop_all_beepers():\n    while bot.carries_beepers():\n        bot.drop_beeper()\n    \n    \ndef move_and_pick_all():\n    bot.move()\n    pick_all_beepers()\n        \ndef move_to_wall():\n    while bot.front_is_clear():\n        move_and_pick_all()\n        \ndef round_trip():\n    move_to_wall()\n    turn_right()\n    if bot.front_is_clear():\n        move_and_pick_all()\n        turn_right()\n        move_to_wall()\n        bot.turn_left()\n        if bot.front_is_clear():\n            move_and_pick_all()\n            bot.turn_left()\n\ndef smart_zigzag():\n    pick_all_beepers()\n    if bot.left_is_clear():\n        bot.turn_left()\n        while bot.front_is_clear():\n            round_trip()\n    else:\n        move_to_wall()\n\ndef face_north():\n    while not bot.facing_north():\n        bot.turn_left()\n        \ndef move_to_corner():\n    face_north()\n    bot.turn_left()\n    move_to_wall()\n    bot.turn_left()\n    move_to_wall()\n    \nsmart_zigzag()\nmove_to_corner()\ndrop_all_beepers()\n\nimport cs1robots\nprint(cs1robots.helper.get_all_beepers_dict())",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\ntest_data = [\n    ('trash3', {'0,0': 56}),\n    ('trash4', {'0,0': 45}),\n]\n\ndef grade(grader):\n    collector = StdoutCollector()\n    bot_test = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    tests = []\n    \n    with open('main.py', 'r') as f:\n        main_src = f.read()\n    \n    for i, (world_name, beepers_dict) in enumerate(test_data):\n        test = grader.test('Robot moved all beepers in the world to the bottom left corner of the world in \"%s\".' % world_name , 'Please pick up all beepers in the world, and drop them all in the bottom left corner of the world.')\n        \n        cs1robots.helper.unlock_world()\n        cs1robots.load_world(world_name)\n        cs1robots.helper.lock_world()\n        \n        with collector:\n            if i == 0:\n                import main\n            else:\n                exec(main_src)\n                \n            robots = cs1robots.helper.get_all_robots()\n            bot_test.expect(len(robots) == 1)\n            test.expect(cs1robots.helper.get_all_beepers_dict() == beepers_dict)\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        },
+        "worlds/": {
+            "type": "dir",
+            "body": ""
+        },
+        "worlds/trash3.wld": {
+            "type": "text",
+            "body": "avenues = 10\nstreets = 10\nrobot = (1, 1, 'E', 0)\nwalls = []\nbeepers = {\n    (1, 2): 18, \n    (7, 3): 4, \n    (4, 8): 1, \n    (5, 6): 7, \n    (7, 1): 4, \n    (9, 2): 11, \n    (8, 8): 1, \n    (1, 10): 3, \n    (2, 5): 3, \n    (5, 8): 2, \n    (7, 9): 2\n}"
+        },
+        "worlds/trash4.wld": {
+            "type": "text",
+            "body": "avenues = 10\r\nstreets = 11\r\nwalls = []\r\nbeepers = {\r\n    (6, 9): 3, \r\n    (1, 3): 2, \r\n    (9, 8): 2, \r\n    (10, 6): 1, \r\n    (5, 1): 2, \r\n    (1, 11): 2, \r\n    (10, 3): 1, \r\n    (5, 5): 2, \r\n    (2, 9): 1, \r\n    (6, 10): 2, \r\n    (1, 5): 1, \r\n    (2, 2): 1, \r\n    (8, 6): 2, \r\n    (4, 10): 1, \r\n    (8, 2): 1, \r\n    (8, 11): 2, \r\n    (9, 10): 3, \r\n    (4, 11): 1, \r\n    (2, 7): 1, \r\n    (4, 6): 1, \r\n    (9, 2): 1, \r\n    (3, 4): 3, \r\n    (5, 7): 1, \r\n    (3, 8): 3, \r\n    (7, 8): 5\r\n}\r\n"
+        }
+    }
+}

@@ -7,42 +7,50 @@
             "description": "Learn how to write basic Python code using functions and loops.",
             "docs": [
                 {
-                    "name": "Get Started",
-                    "id": "01-1-get-started"
+                    "name": "Objects",
+                    "id": "01-1-objects"
                 },
                 {
-                    "name": "Robots",
-                    "id": "01-2-robots"
+                    "name": "Variables",
+                    "id": "01-2-variables"
                 },
                 {
-                    "name": "Loops",
-                    "id": "01-3-loops"
+                    "name": "Methods and Operators",
+                    "id": "01-3-methods-and-operators"
+                },
+                {
+                    "name": "Tuples",
+                    "id": "01-4-tuples"
+                },
+                {
+                    "name": "Media",
+                    "id": "01-5-media"
                 }
             ]
         },
         {
-            "name": "Lab: Tiny Bit of Python",
-            "description": "Hands-on programming exercises for learning about Python syntax, define functions, and use for-loops.",
+            "name": "Lab: Objects",
+            "description": "Practice using Python objects.",
             "docs": [
                 {
-                    "name": "Task 1: Zigzag",
-                    "id": "02-1-zigzag"
+                    "name": "Task 1: Return",
+                    "id": "02-1-return"
                 },
                 {
-                    "name": "Task 2: Hurdles",
-                    "id": "02-2-hurdles"
+                    "name": "Task 2: Trash 1",
+                    "id": "02-2-trash1"
                 },
                 {
-                    "name": "Task 3: Newspaper Delivery",
-                    "id": "02-3-newspaper"
+                    "name": "Task 3: Trash 2",
+                    "id": "02-3-trash2"
                 },
                 {
-                    "name": "Task 4: Harvest",
-                    "id": "02-4-harvest"
+                    "name": "Task 4: Rain",
+                    "id": "02-4-rain"
                 },
                 {
-                    "name": "Task 5: Harvest Again",
-                    "id": "02-5-harvest-again"
+                    "name": "Task 5: Color Poster",
+                    "id": "02-5-color-poster"
                 }
             ]
         },

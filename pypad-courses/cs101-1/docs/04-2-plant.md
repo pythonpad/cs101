@@ -18,3 +18,7 @@ Route of your robot does not matter as long as it drops the beepers in the corre
 
 <iframe class="u-pad-embed" src="../pads/plant/
 exercise_embed/" frameborder="0"></iframe>
+
+## Solution
+
+<a class="c-button" href="../04-2-plant-solution">View Solution</a>

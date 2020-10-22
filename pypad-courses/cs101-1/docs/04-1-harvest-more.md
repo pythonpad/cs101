@@ -24,3 +24,7 @@ if bot.on_beeper():
 
 <iframe class="u-pad-embed" src="../pads/harvest-more/
 exercise_embed/" frameborder="0"></iframe>
+
+## Solution
+
+<a class="c-button" href="../04-1-harvest-more-solution">View Solution</a>

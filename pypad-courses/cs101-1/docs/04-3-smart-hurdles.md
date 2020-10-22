@@ -32,4 +32,6 @@ To make your robot jumps over random number of multiple hurdles, use a while loo
 <iframe class="u-pad-embed" src="../pads/smart-hurdles/
 exercise_embed/" frameborder="0"></iframe>
 
+## Solution
 
+<a class="c-button" href="../04-3-smart-hurdles-solution">View Solution</a>

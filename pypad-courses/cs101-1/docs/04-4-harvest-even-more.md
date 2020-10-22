@@ -23,3 +23,7 @@ Be aware there are spots with more than one beepers. Use while loop with the rob
 
 <iframe class="u-pad-embed" src="../pads/harvest-even-more/
 exercise_embed/" frameborder="0"></iframe>
+
+## Solution
+
+<a class="c-button" href="../04-4-harvest-even-more-solution">View Solution</a>

@@ -1,0 +1,14 @@
+{
+    "title": "[Answer] Return",
+    "content": "from cs1robots import *\n\ncreate_world()\n\n# Your code should work with any of the initial locations and directions below. \n\nbot = Robot(orientation='W', avenue=7, street=5)\n# bot = Robot(orientation='N', avenue=3, street=9)\n# bot = Robot(orientation='S', avenue=1, street=4)\n# bot = Robot(orientation='E', avenue=5, street=1)\n\nbot.set_trace('blue')\nbot.set_pause(0.3)\n\ndef face_north():\n    while not bot.facing_north():\n        bot.turn_left()\n        \ndef move_to_wall():\n    while bot.front_is_clear():\n        bot.move()\n        \ndef move_to_corner():\n    face_north()\n    bot.turn_left()\n    move_to_wall()\n    bot.turn_left()\n    move_to_wall()\n\nmove_to_corner()\n",
+    "files": {
+        ".grader.py": {
+            "type": "text",
+            "body": "import re\nfrom gradepad import StdoutCollector, Grader\nimport cs1robots\n\ntest_data = [\n    [3, 7, 'N'],\n    [9, 5, 'S'],\n    [5, 8, 'W'],\n    [1, 6, 'W'],\n    [4, 1, 'E'],\n]\n\ndef grade(grader):\n    collector = StdoutCollector()\n    bot_test = grader.test('A robot exists.', 'Please make one robot. No more, no less. Try \"bot = Robot()\"?')\n    tests = []\n    \n    with open('main.py', 'r') as f:\n        main_src = f.read()\n    \n    for i, (a, s, o) in enumerate(test_data):\n        test = grader.test('Robot returns to the bottom left corner of the world when it starts at (%d, %d) with orientation \"%s\".' % (a, s, o), 'Please move the robot to the bottom left corner of the world no matter where robot is created at.')\n        \n        cs1robots.helper.unlock_world()\n        cs1robots.create_world()\n        cs1robots.helper.lock_world()\n        cs1robots.helper.lock_robot_parameters(avenue=a, street=s, orientation=o)\n        \n        with collector:\n            if i == 0:\n                import main\n\n            else:\n                exec(main_src)\n                \n            robots = cs1robots.helper.get_all_robots()\n            bot_test.expect(len(robots) == 1)\n            test.expect(robots[0].position_log[-1] == [0, 0])\n    \ngrader = Grader(locale='en')\ngrader.run(grade)"
+        },
+        ".passed.json": {
+            "type": "text",
+            "body": ""
+        }
+    }
+}

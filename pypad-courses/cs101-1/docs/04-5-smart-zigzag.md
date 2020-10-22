@@ -25,3 +25,7 @@ Your code must work for all sizes of empty worlds, except a 1x1 world.
 
 <iframe class="u-pad-embed" src="../pads/smart-zigzag/
 exercise_embed/" frameborder="0"></iframe>
+
+## Solution
+
+<a class="c-button" href="../04-5-smart-zigzag-solution">View Solution</a>
