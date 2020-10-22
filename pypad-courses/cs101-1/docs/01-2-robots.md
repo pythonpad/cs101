@@ -34,9 +34,9 @@ Define a function!
 
 ```python
 def turn_right():
-    hubo.turn_left()
-    hubo.turn_left()
-    hubo.turn_left()
+    bot.turn_left()
+    bot.turn_left()
+    bot.turn_left()
 ```
 
 ## Newspaper delivery
@@ -62,7 +62,7 @@ And this can be converted to a Python version like this.
 
 ```python
 climb_up_four_stairs()
-hubo.drop_beeper()
+bot.drop_beeper()
 turn_around()
 climb_down_four_stairs()
 ```
@@ -75,8 +75,8 @@ Here is the implementation of `turn_around()`.
 
 ```python
 def turn_around():
-    hubo.turn_left()
-    hubo.turn_left()
+    bot.turn_left()
+    bot.turn_left()
 ```
 
 But how do we implement the `climb_up_four_stairs()`?
@@ -100,11 +100,11 @@ And we can implement `climb_up_one_stair()` like this.
 
 ```python
 def climb_up_one_stair():
-    hubo.turn_left()
-    hubo.move()
+    bot.turn_left()
+    bot.move()
     turn_right()
-    hubo.move()
-    hubo.move()
+    bot.move()
+    bot.move()
 ```
 
 ## Top-down design

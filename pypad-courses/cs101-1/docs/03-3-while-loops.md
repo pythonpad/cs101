@@ -143,17 +143,17 @@ Let’s clean up our program:
 # clockwise, stopping when he returns to the starting point. from cs1robots import *
 
 load_world('amazing5')
-hubo = Robot(beepers = 1)
+bot = Robot(beepers = 1)
 
 def turn_right(): 
     for i in range(3): 
-        hubo.turn_left()
+        bot.turn_left()
 
 def mark_starting_point_and_move(): 
-    hubo.drop_beeper()
-    while not hubo.front_is_clear():
-        hubo.turn_left()
-    hubo.move()
+    bot.drop_beeper()
+    while not bot.front_is_clear():
+        bot.turn_left()
+    bot.move()
 
 def follow_right_wall():
     if bot.right_is_clear():
@@ -171,7 +171,7 @@ def follow_right_wall():
 
 mark_starting_point_and_move()
 
-while not hubo.on_beeper(): 
+while not bot.on_beeper(): 
     follow_right_wall()
 ```
 

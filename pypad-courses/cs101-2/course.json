@@ -1,21 +1,7 @@
 {
-    "name": "Introduction to Programming 1: Functions, Loops, and Conditionals",
-    "description": "An introductory programming course designed to teach programming skills and computational thinking (1/5).",
+    "name": "Introduction to Programming 2: Data and Variables",
+    "description": "An introductory programming course designed to teach programming skills and computational thinking (2/5).",
     "chapters": [
-        {
-            "name": "Introduction",
-            "description": "Learn about this course.",
-            "docs": [
-                {
-                    "name": "About the Course",
-                    "id": "00-1-about"
-                },
-                {
-                    "name": "Introduction",
-                    "id": "00-2-intro"
-                }
-            ]
-        },
         {
             "name": "Functions and Loops",
             "description": "Learn how to write basic Python code using functions and loops.",
