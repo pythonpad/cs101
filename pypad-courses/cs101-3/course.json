@@ -1,0 +1,90 @@
+{
+    "name": "Introduction to Programming 3: Objects and Sequences",
+    "description": "An introductory programming course designed to teach programming skills and computational thinking (3/5).",
+    "chapters": [
+        {
+            "name": "Objects and Graphics",
+            "description": "Learn about scopes, objects, and the graphics module.",
+            "docs": [
+                {
+                    "name": "Local Variables and Global Variables",
+                    "id": "01-1-locals-and-globals"
+                },
+                {
+                    "name": "Modules",
+                    "id": "01-2-modules"
+                },
+                {
+                    "name": "Graphics",
+                    "id": "01-3-graphics"
+                },
+                {
+                    "name": "Objects",
+                    "id": "01-4-objects"
+                }
+            ]
+        },
+        {
+            "name": "Lab: Graphics, Locals, and Globals",
+            "description": "Practice using the graphics module with local and global variables.",
+            "docs": [
+                {
+                    "name": "Task 1: Bank",
+                    "id": "02-1-bank"
+                },
+                {
+                    "name": "Task 2: Animation",
+                    "id": "02-2-animation"
+                }
+            ]
+        },
+        {
+            "name": "Functions with Parameters and Return Values",
+            "description": "Learn how to use functions with parameters and return values.",
+            "docs": [
+                {
+                    "name": "Return Values and Parameters",
+                    "id": "03-1-return-values-and-parameters"
+                },
+                {
+                    "name": "More Return Values",
+                    "id": "03-2-more-return-values"
+                },
+                {
+                    "name": "Harvesting Again",
+                    "id": "03-3-harvesting-again"
+                },
+                {
+                    "name": "Keyboard Input",
+                    "id": "03-4-keyboard-input"
+                }
+            ]
+        },
+        {
+            "name": "Lab: Math with Python",
+            "description": "Practice using functions with parameters and return values in Python programs.",
+            "docs": [
+                {
+                    "name": "Task 1: Addition",
+                    "id": "04-1-addition"
+                },
+                {
+                    "name": "Task 2: Being Euclid",
+                    "id": "04-2-euclid"
+                },
+                {
+                    "name": "Task 3: Being Edmund Gunter",
+                    "id": "04-3-gunter"
+                },
+                {
+                    "name": "Task 4: Being Edmund Gunter 2",
+                    "id": "04-4-gunter2"
+                },
+                {
+                    "name": "Task 5: Being Edmund Gunter 3",
+                    "id": "04-5-gunter3"
+                }
+            ]
+        }
+    ]
+}
